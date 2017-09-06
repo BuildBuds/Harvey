@@ -6,7 +6,6 @@
   "scripts": {
     "start": "NODE_ENV=production node index.js",
     "gulp": "gulp",
-    "dev": "NODE_ENV=development gulp && node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -29,8 +28,13 @@
     "npm": "^5.3"
   },
   "devDependencies": {
+    "browser-sync": "^2.18.13",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
-    "gulp-sass": "^3.1.0"
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-uglify": "^3.0.0",
+    "nodemon": "^1.12.0"
   }
 }
