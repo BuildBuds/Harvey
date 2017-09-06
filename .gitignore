@@ -1,0 +1,7 @@
+# Dependency directory
+node_modules
+
+# Public folder
+public
+
+*.DS_Store
