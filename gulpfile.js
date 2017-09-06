@@ -5,7 +5,9 @@ const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const sourcemaps = require('gulp-sourcemaps');
 const browserSync = require('browser-sync').create();
+const nodemon = require('nodemon');
 
+// Sass
 gulp.task('sass', function() {
   gulp.src('./src/sass/**/*.scss')
     .pipe(sourcemaps.init())
@@ -36,14 +38,29 @@ gulp.task('js:watch', ['js'], function() {
   gulp.watch('src/js/**/*.js', ['js']);
 });
 
+// Nodemon
+gulp.task('nodemon', function(cb) {
+  nodemon({
+    script: 'index.js',
+    watch: ['index.js', 'views'],
+    env: {NODE_ENV: 'development'},
+    extension: 'js handlebars'
+  })
+    .once('start', function() {
+      cb()
+    })
+    .on('restart', function() {
+      setTimeout(function() {
+        browserSync.reload()
+      }, 500);
+    });
+});
+
 
 // BrowserSync
-gulp.task('serve', ['build'], () => {
+gulp.task('serve', ['nodemon'], function() {
   browserSync.init({
-    server: {
-      // TODO: make this a dynamic environment variable
-      proxy: 'localhost:3000'
-    }
+    proxy: 'http://localhost:8080'
   });
 });
 
@@ -56,4 +73,4 @@ gulp.task('build', ['sass', 'js']);
 //////////////////////////////
 // Default
 //////////////////////////////
-gulp.task('default', ['serve', 'watch']);
+gulp.task('default', ['serve', 'build', 'watch']);

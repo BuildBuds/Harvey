@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 });
 
 // TODO: Dynamic Ports
-// Listen on port 3000
-app.listen(3000, () => {
-  console.log('Express server is now listening on port 3000');
+// Listen on port 8080
+app.listen(8080, () => {
+  console.log('Express server is now listening on port 8080');
 });
