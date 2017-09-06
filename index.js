@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
 
+// Use express
 const app = express();
 
 // Specifies the technology (e.g. ASP.NET, PHP, JBoss) supporting the web application
@@ -13,13 +14,22 @@ app.set('trust proxy', true);
 // Set the static assets folder to serve to the applications front end
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Register handlebars as an engine and specify our default layout
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+
+// Set our view engines file extension to handlebars
 app.set('view engine', 'handlebars');
 
+// Cache views in production
+app.enable('view cache');
+
+// Home Route
 app.get('/', (req, res) => {
   res.render('home')
 });
 
-app.listen(3000, () => {
-  console.log('Express server is now listening on port 3000');
+// TODO: Dynamic Ports
+// Listen on port 8080
+app.listen(8080, () => {
+  console.log('Express server is now listening on port 8080');
 });
