@@ -4,6 +4,8 @@
   "description": "Project Harvey disaster relief website",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "gulp": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +17,14 @@
   "bugs": {
     "url": "https://github.com/BuildBuds/Harvey/issues"
   },
-  "homepage": "https://github.com/BuildBuds/Harvey#readme"
+  "homepage": "https://github.com/BuildBuds/Harvey#readme",
+  "dependencies": {
+    "express": "^4.15.4",
+    "express-handlebars": "^3.0.0",
+    "path": "^0.12.7"
+  },
+  "engines": {
+    "node": "^8.4",
+    "npm": "^5.3"
+  }
 }
