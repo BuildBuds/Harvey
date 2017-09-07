@@ -1,4 +1,9 @@
 $red: #f00;
+
 body {
   background-color: steelblue;
+}
+
+.nav, .results {
+  display: none;
 }

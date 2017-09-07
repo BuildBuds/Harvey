@@ -7,8 +7,81 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    {{{body}}}
-
+    <nav class="nav">
+      <ul class="nav-items">
+        <li class="nav-item">
+          How do you want to give?
+        </li>
+        <li class="nav-item">
+          <button class="button">
+            Anything
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="button">
+            Money
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="button">
+            Time
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="button">
+            Goods
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="button">
+            Share
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <main class="main">
+      <form class="main-content quiz">
+        <h1 class="quiz-header">Glad you want to help! Let's find out which charities are the best matches for you.</h1>
+        <fieldset>
+          <legend class = "quiz-question">Which type(s) of organizations are you interested in supporting></legend>
+          <div class="quiz-options">
+            <input id="q1-1" value="general relief" type="checkbox" />
+            <label for"q1-1">General Relief</label>
+            <input id="q1-2" value="housing" type="checkbox" />
+            <label for"q1-2">Housing</label>
+            <input id="q1-3" value="food" type="checkbox" />
+            <label for"q1-3">Food</label>
+            <input id="q1-4" value="animal welfare" type="checkbox" />
+            <label for"q1-4">Animal Welfare</label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend class = "quiz-question">Which type(s) of contribution would you like to make?</legend>
+          <div class="quiz-options">
+            <input id="q2-1" value="financial" type="checkbox" />
+            <label for"q1-1">Financial</label>
+            <input id="q2-1" value="time" type="checkbox" />
+            <label for"q2-1">Time</label>
+            <input id="q2-1" value="goods" type="checkbox" />
+            <label for"q2-1">Goods</label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend class = "quiz-question">Would you like to donate to a local or national charity?</legend>
+          <div class="quiz-options">
+            <input id="q3-1" value="local" type="radio" />
+            <label for"q3-1">Local</label>
+            <input id="q3-2" value="national" type="radio" />
+            <label for"q3-2">National</label>
+          </div>
+        </fieldset>
+        <input type="submit" value="Submit" />
+      </form>
+      <section class="main-content results">
+        <ul class="results-links"></ul>
+        <article class="results-selection"></article>
+      </section>
+    </main>
     <script src="/js/app.js"></script>
 </body>
 </html>
