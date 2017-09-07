@@ -5,19 +5,32 @@ console.log('pomf');
 // Also assumes that the values are arrays.
 // I commented out the call to isLocal for several reasons I can mention later.
 var pred = {
-  'types': 'Time',
-  'tags': 'Medical'
+  'types': ['Time'],
+  'tags': ['Medical'],
+  'local': false
 };
 
 (function() {
-  let out = orgs.filter((org) => {
+  var isLocal = function(add) {
+    return add.toLowerCase().indexOf('houston') >= 0;
+  };
+
+  var out = orgs.filter((org) => {
     for (var key in pred) {
-      if (org[key].indexOf(pred[key]) < 0) {
-        return false;
+      if (key == 'local') { continue; }
+
+      var vals = pred[key];
+      for (var i=0; i<vals.length; i++){
+        if (org[key].indexOf(vals[i]) < 0) {
+          return false;
+        }
       }
     }
 
+    if (pred['local']) {
+      return isLocal(org.address);
+    }
+
     return true;
-    // return isLocal(org.address);
   });
 })();
