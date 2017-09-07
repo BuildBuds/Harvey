@@ -3,6 +3,7 @@ const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
+const gutil = require('gulp-util');
 const sourcemaps = require('gulp-sourcemaps');
 const browserSync = require('browser-sync').create();
 const nodemon = require('nodemon');
@@ -29,6 +30,7 @@ gulp.task('js', function() {
     .pipe(sourcemaps.init())
       .pipe(concat('app.js'))
       .pipe(uglify())
+      .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest('public/js'))
     .pipe(browserSync.stream());
