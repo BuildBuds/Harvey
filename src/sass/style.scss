@@ -1,9 +1,20 @@
-$red: #f00;
+@import 'utility';
+@import 'normalize';
+@import 'typography';
+@import 'theme';
+@import 'layout';
+@import 'modules';
+
 
 body {
-  background-color: steelblue;
+  margin: 0;
 }
 
 .nav, .results {
   display: none;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
 }

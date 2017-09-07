@@ -4,9 +4,11 @@
     <meta charset="utf-8">
     <title>Example App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400|Work+Sans:400" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+  <div class="wrapper">
     <nav class="nav">
       <ul class="nav-items">
         <li class="nav-item">
@@ -41,21 +43,29 @@
     </nav>
     <main class="main">
       <form class="main-content quiz">
-        <h1 class="quiz-header">Glad you want to help! Let's find out which charities are the best matches for you.</h1>
-        <fieldset>
+        <h1 class="quiz-header">Glad you want to help!<br />Let's find out which charities are the best matches for you.</h1>
+        <fieldset class="quiz-question-group">
           <legend class = "quiz-question">Which type(s) of organizations are you interested in supporting></legend>
           <div class="quiz-options">
-            <input id="q1-1" value="general relief" type="checkbox" />
-            <label for"q1-1">General Relief</label>
-            <input id="q1-2" value="housing" type="checkbox" />
-            <label for"q1-2">Housing</label>
-            <input id="q1-3" value="food" type="checkbox" />
-            <label for"q1-3">Food</label>
-            <input id="q1-4" value="animal welfare" type="checkbox" />
-            <label for"q1-4">Animal Welfare</label>
+            <div class="quiz-option">
+              <input id="q1-1" value="general relief" type="checkbox" />
+              <label for"q1-1">General Relief</label>
+            </div>
+            <div class="quiz-option">
+              <input id="q1-2" value="housing" type="checkbox" />
+              <label for"q1-2">Housing</label>
+            </div>
+            <div class="quiz-option">
+              <input id="q1-3" value="food" type="checkbox" />
+              <label for"q1-3">Food</label>
+            </div>
+            <div class="quiz-option">
+              <input id="q1-4" value="animal welfare" type="checkbox" />
+              <label for"q1-4">Animal Welfare</label>
+            </div>
           </div>
         </fieldset>
-        <fieldset>
+        <fieldset class="quiz-question-group">
           <legend class = "quiz-question">Which type(s) of contribution would you like to make?</legend>
           <div class="quiz-options">
             <input id="q2-1" value="financial" type="checkbox" />
@@ -66,7 +76,7 @@
             <label for"q2-1">Goods</label>
           </div>
         </fieldset>
-        <fieldset>
+        <fieldset class="quiz-question-group">
           <legend class = "quiz-question">Would you like to donate to a local or national charity?</legend>
           <div class="quiz-options">
             <input id="q3-1" value="local" type="radio" />
@@ -82,6 +92,7 @@
         <article class="results-selection"></article>
       </section>
     </main>
+  </div>
     <script src="/js/app.js"></script>
 </body>
 </html>

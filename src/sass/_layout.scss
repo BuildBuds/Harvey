@@ -1,0 +1,41 @@
+$gridGap: 20px;
+$gridGutters: 4 * $gridGap;
+$gridWidth: calc(100% - 80px * 2);
+
+.wrapper {
+  max-width: $gridWidth;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: $gridGap;
+}
+
+.main {
+  grid-column: 4 / span 6;
+  display: flex;
+  margin-top: $gridGutters;
+}
+
+.quiz-question-group {
+  margin-bottom: $gridGap;
+  width: 66%;
+}
+.quiz-options {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.quiz-option {
+  flex-basis: 50%;
+  background-color:red;
+  display: inline-block;
+}
+.quiz-option:nth-child(odd) {
+  background-color: purple;
+  flex-basis: 60%;
+}
+.quiz-option:nth-child(even) {
+  background-color: green;
+  flex-basis: 40%;
+}
