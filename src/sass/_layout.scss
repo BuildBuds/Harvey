@@ -1,6 +1,6 @@
 $gridGap: 40px;
 $gridGutters: 4 * $gridGap;
-$gridWidth: calc(100% - 160px * 2);
+$gridWidth: calc(100% - 80px * 2);
 
 $gridColumns: repeat(12, 1fr);
 
@@ -10,12 +10,15 @@ $gridColumns: repeat(12, 1fr);
 }
 
 .main {
-  grid-column: 1 / span 12;
   display: grid;
   margin-top: $gridGap;
   margin-bottom: $gridGap;
   grid-template-columns: $gridColumns;
   grid-gap: $gridGap;
+}
+
+.quiz {
+  grid-column: 2 / span 10;
 }
 
 .results {
@@ -25,7 +28,7 @@ $gridColumns: repeat(12, 1fr);
 }
 
 
-@media (min-width: 400px) {
+@media (min-width: 500px) {
   .wrapper {
     max-width: $gridWidth;
   }
