@@ -42,9 +42,9 @@ gulp.task('js:watch', ['js'], function() {
 gulp.task('nodemon', function(cb) {
   nodemon({
     script: 'index.js',
-    watch: ['index.js', 'views'],
+    watch: ['index.js', 'views/layouts', 'views/partials', 'views'],
     env: {NODE_ENV: 'development'},
-    extension: 'js handlebars'
+    ext: 'js handlebars'
   })
     .once('start', function() {
       cb()

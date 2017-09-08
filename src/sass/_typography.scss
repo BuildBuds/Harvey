@@ -4,8 +4,27 @@ $secondaryFont: 'Oswald', 'Helvetica', 'sans-serif';
 body {
   font-family: $primaryFont;
 }
+
 h1 {
   font-family: $secondaryFont;
-  font-size: 50px;
-  line-height: 60px;
+  font-size: 18px;
+}
+
+@media (min-width: 400px) {
+  h1 {
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 600px) {
+  h1 {
+    font-size: 42px;
+  }
+}
+
+@media (min-width: 850px) {
+  h1 {
+    font-size: 50px;
+    line-height: 60px;
+  }
 }

@@ -3,7 +3,7 @@ $gridGutters: 4 * $gridGap;
 $gridWidth: calc(100% - 80px * 2);
 
 .wrapper {
-  max-width: $gridWidth;
+  max-width: 100%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -11,31 +11,26 @@ $gridWidth: calc(100% - 80px * 2);
 }
 
 .main {
-  grid-column: 4 / span 6;
+  grid-column: 2 / span 11;
   display: flex;
   margin-top: $gridGutters;
+  margin-bottom: $gridGutters;
 }
 
-.quiz-question-group {
-  margin-bottom: $gridGap;
-  width: 66%;
-}
-.quiz-options {
-  display: flex;
-  position: relative;
-  flex-wrap: wrap;
+@media (min-width: 400px) {
+  .wrapper {
+    max-width: $gridWidth;
+  }
 }
 
-.quiz-option {
-  flex-basis: 50%;
-  background-color:red;
-  display: inline-block;
+@media (min-width: 1000px) {
+  .main {
+    grid-column: 3 / span 8;
+  }
 }
-.quiz-option:nth-child(odd) {
-  background-color: purple;
-  flex-basis: 60%;
-}
-.quiz-option:nth-child(even) {
-  background-color: green;
-  flex-basis: 40%;
+
+@media (min-width: 1200px) {
+  .main {
+    grid-column: 4 / span 6;
+  }
 }

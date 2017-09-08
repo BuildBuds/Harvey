@@ -10,3 +10,8 @@ h1 {
   color: $punchRed;
   text-transform: uppercase;
 }
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  color: $punchRed
+}
