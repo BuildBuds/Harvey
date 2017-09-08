@@ -62,7 +62,7 @@ quizForm.addEventListener('submit', submitHandler);
 function submitHandler(e) {
   e.preventDefault();
   // TODO : store the values of the quiz questions
-  
+
   // make the quiz display none
   quizForm.classList.add('hidden');
 
