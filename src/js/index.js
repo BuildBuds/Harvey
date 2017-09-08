@@ -5,8 +5,6 @@ var quizResults = document.querySelector('.results');
 var main = document.querySelector('.main');
 var nav = document.querySelector('nav');
 
-<<<<<<< HEAD
-=======
 var httpGet = function(url, callback){
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.onreadystatechange = function() {
@@ -16,7 +14,26 @@ var httpGet = function(url, callback){
   xmlHttp.open("GET", url, true); // true for asynchronous
   xmlHttp.send(null);
 };
->>>>>>> ce5240d02897c27688829794e91a3ff81cb730c2
+
+var setContent = function(json) {
+  // Grab the template script
+  var theTemplateScript = document.getElementById('address-template').innerHTML;
+
+
+  // Compile the template
+  var theTemplate = Handlebars.compile(theTemplateScript);
+
+  // Define data object
+  var context = {
+    charities: json
+  };
+
+  // Pass our data to the template
+  var theCompiledHtml = theTemplate(context);
+
+  // Add the compiled html to the page
+  document.querySelector('.content-placeholder').innerHTML = theCompiledHtml;
+};
 
 // Handles form submission
 var submitHandler = function(e) {
@@ -87,26 +104,12 @@ var submitHandler = function(e) {
 
       return true;
     });
-<<<<<<< HEAD
 
+    console.log(out);
     return out;
   };
 
   var relevantOrgs = showRelevantOrgs();
-  console.log(relevantOrgs);
-=======
-  });
-})();
-
-// Target the quiz form
-var quizForm = document.querySelector('.quiz-form');
-var quizResults = document.querySelector('.results');
-var main = document.querySelector('.main');
-var nav = document.querySelector('nav')
-
-// Listen for submit of quiz form
-quizForm.addEventListener('submit', submitHandler);
->>>>>>> ce5240d02897c27688829794e91a3ff81cb730c2
 
   // make the quiz display none
   quizForm.classList.add('hidden');
@@ -119,28 +122,10 @@ quizForm.addEventListener('submit', submitHandler);
 
   // make the nav appear
   nav.classList.remove('hidden');
-
 };
 
-var setContent = function(json) {
-  // Grab the template script
-  var theTemplateScript = document.getElementById('address-template').innerHTML;
 
-
-  // Compile the template
-  var theTemplate = Handlebars.compile(theTemplateScript);
-
-  // Define data object
-  var context = {
-    charities: json
-  };
-
-  // Pass our data to the template
-  var theCompiledHtml = theTemplate(context);
-
-  // Add the compiled html to the page
-  document.querySelector('.content-placeholder').innerHTML = theCompiledHtml;
-};
+quizForm.addEventListener('submit', submitHandler);
 
 
 (function() {
