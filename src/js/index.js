@@ -44,10 +44,24 @@ var setContent = function(orgs) {
   })
 };
 
+var progressView = function() {
+  // make the quiz display none
+  quizForm.classList.add('hidden');
+
+  // make the results page display
+  quizResults.classList.remove('hidden');
+
+  // make the main section take up the whole page
+  main.classList.add('full-grid');
+
+  // make the nav appear
+  nav.classList.remove('hidden');
+};
 
 // Handles form submission
 var submitHandler = function(e) {
   e.preventDefault();
+
 
   var showRelevantOrgs = function() {
     var getQuizParams = function() {
@@ -71,6 +85,14 @@ var submitHandler = function(e) {
 
       var q1Params = getCheckedBoxes(q1cbs);
       var q2Params = getCheckedBoxes(q2cbs);
+
+      if (q1Params == null && q2Params == null) {
+        return {
+          'types': ['Money', 'Goods', 'Time'],
+          'tags': ['General Relief', 'Shelter', 'Medical', 'Animals', 'Food', 'Disabilities', 'Seniors', 'Kids'],
+          'local': false
+        }
+      }
 
       var types = [];
       var tags = [];
@@ -120,24 +142,12 @@ var submitHandler = function(e) {
   };
 
   var relevantOrgs = showRelevantOrgs();
-  setContent(relevantOrgs);
-
-  // make the quiz display none
-  quizForm.classList.add('hidden');
-
-  // make the results page display
-  quizResults.classList.remove('hidden');
-
-  // make the main section take up the whole page
-  main.classList.add('full-grid');
-
-  // make the nav appear
-  nav.classList.remove('hidden');
+  progressView();
 };
 
 
 quizForm.addEventListener('submit', submitHandler);
-
+document.querySelector('.browse').addEventListener('click', progressView);
 
 (function() {
   var apiCallback = function(data) {
