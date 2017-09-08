@@ -38,3 +38,30 @@ var pred = {
 })();
 
 */
+
+
+// Target the quiz form
+var quizForm = document.querySelector('.quiz-form');
+var quizResults = document.querySelector('.results');
+var main = document.querySelector('.main');
+var nav = document.querySelector('nav')
+
+// Listen for submit of quiz form
+quizForm.addEventListener('submit', submitHandler);
+
+function submitHandler(e) {
+  e.preventDefault();
+  // TODO : store the values of the quiz questions
+  
+  // make the quiz display none
+  quizForm.classList.add('hidden');
+
+  // make the results page display
+  quizResults.classList.remove('hidden');
+
+  // make the main section take up the whole page
+  main.classList.add('full-grid');
+
+  // make the nav appear
+  nav.classList.remove('hidden');
+}

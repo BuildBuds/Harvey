@@ -2,20 +2,28 @@ $gridGap: 20px;
 $gridGutters: 4 * $gridGap;
 $gridWidth: calc(100% - 80px * 2);
 
+$gridColumns: repeat(12, 1fr);
+
 .wrapper {
   max-width: 100%;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-gap: $gridGap;
 }
 
 .main {
-  grid-column: 2 / span 11;
-  display: flex;
+  grid-column: 1 / span 12;
+  display: grid;
   margin-top: $gridGutters;
   margin-bottom: $gridGutters;
+  grid-template-columns: $gridColumns;
+  grid-gap: $gridGap;
 }
+
+.results {
+  grid-column: 1 / span 12;
+  display: grid;
+  grid-template-columns: $gridColumns;
+}
+
 
 @media (min-width: 400px) {
   .wrapper {
@@ -24,13 +32,25 @@ $gridWidth: calc(100% - 80px * 2);
 }
 
 @media (min-width: 1000px) {
-  .main {
+  .quiz {
     grid-column: 3 / span 8;
   }
 }
 
 @media (min-width: 1200px) {
-  .main {
+  .quiz {
     grid-column: 4 / span 6;
   }
+}
+
+.results-selection {
+  grid-column: 1 / span 4;
+}
+.results-list {
+  grid-column: 6 / span 6;
+}
+
+.nav-items {
+  display: flex;
+  flex-direction: row;
 }

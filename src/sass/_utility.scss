@@ -8,3 +8,10 @@ html {
   -moz-box-sizing: inherit;
   box-sizing: inherit;
   }
+
+  .hidden {
+    display: none !important;
+  }
+  .full-grid {
+    grid-column: 1 / span 12;
+  }
