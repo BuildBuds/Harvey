@@ -10,6 +10,8 @@ var pred = {
   'local': false
 };
 
+/*
+
 (function() {
   var isLocal = function(add) {
     return add.toLowerCase().indexOf('houston') >= 0;
@@ -34,3 +36,5 @@ var pred = {
     return true;
   });
 })();
+
+*/
