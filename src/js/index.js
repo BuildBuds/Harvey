@@ -35,9 +35,24 @@ var setContent = function(json) {
   document.querySelector('.content-placeholder').innerHTML = theCompiledHtml;
 };
 
+var progressView = function() {
+  // make the quiz display none
+  quizForm.classList.add('hidden');
+
+  // make the results page display
+  quizResults.classList.remove('hidden');
+
+  // make the main section take up the whole page
+  main.classList.add('full-grid');
+
+  // make the nav appear
+  nav.classList.remove('hidden');
+};
+
 // Handles form submission
 var submitHandler = function(e) {
   e.preventDefault();
+
 
   var showRelevantOrgs = function() {
     var getQuizParams = function() {
@@ -61,6 +76,14 @@ var submitHandler = function(e) {
 
       var q1Params = getCheckedBoxes(q1cbs);
       var q2Params = getCheckedBoxes(q2cbs);
+
+      if (q1Params == null && q2Params == null) {
+        return {
+          'types': ['Money', 'Goods', 'Time'],
+          'tags': ['General Relief', 'Shelter', 'Medical', 'Animals', 'Food', 'Disabilities', 'Seniors', 'Kids'],
+          'local': false
+        }
+      }
 
       var types = [];
       var tags = [];
@@ -110,27 +133,12 @@ var submitHandler = function(e) {
   };
 
   var relevantOrgs = showRelevantOrgs();
-
-function submitHandler(e) {
-  e.preventDefault();
-  // TODO : store the values of the quiz questions
-
-  // make the quiz display none
-  quizForm.classList.add('hidden');
-
-  // make the results page display
-  quizResults.classList.remove('hidden');
-
-  // make the main section take up the whole page
-  main.classList.add('full-grid');
-
-  // make the nav appear
-  nav.classList.remove('hidden');
+  progressView();
 };
 
 
 quizForm.addEventListener('submit', submitHandler);
-
+document.querySelector('.browse').addEventListener('click', progressView);
 
 (function() {
   var apiCallback = function(data) {
@@ -138,11 +146,5 @@ quizForm.addEventListener('submit', submitHandler);
     orgs = parsed.res;
   };
 
-<<<<<<< HEAD
-// Add the compiled html to the page
-document.querySelector('.content-placeholder').innerHTML = theCompiledHtml;
-};
-=======
   httpGet('https://harvey-api.mybluemix.net/api/0.1/hh', function(d) { apiCallback(d); });
 })();
->>>>>>> 0b38a847ccc59949d9262ff1a8217f9f630b4a89
