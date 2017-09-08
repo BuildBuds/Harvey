@@ -1,3 +1,166 @@
+.quiz {
+  position: relative;
+}
+
 .quiz-question-group {
   border: none;
+}
+
+/* A question group that includes the question and options */
+
+.quiz-question-group {
+  margin-bottom: $gridGap;
+  width: 90%;
+}
+
+/* A question element on a quiz */
+
+.quiz-question {
+  padding: $gridGap / 2 0;
+}
+
+/* Quiz blocks the contain multiple options */
+
+.quiz-options {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.quiz-options input[type="checkbox"] {
+  border-radius: 10px;
+  border: 20px solid #808080;
+}
+
+/* A singlar quiz option */
+
+.quiz-option {
+  flex-basis: 50%;
+  display: inline-block;
+  padding: 10px 10px 10px 0;
+}
+
+.quiz-radios .quiz-option {
+  flex-basis: 100%;
+}
+
+/* Hide input elements because they are not stylable */
+
+.quiz input[type="checkbox"],
+.quiz input[type="radio"] {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+/* Quiz Labels */
+
+.quiz input[type="checkbox"]:focus + label,
+.quiz input[type='radio']:focus + label {
+  outline: -webkit-focus-ring-color auto 5px;
+    outline-color: -webkit-focus-ring-color;
+    outline-style: auto;
+    outline-width: 5px;
+}
+
+.quiz input[type="checkbox"] + label,
+.quiz input[type='radio'] + label {
+  cursor: pointer;
+}
+
+.quiz input[type="checkbox"] + label {
+  align-items: center;
+  display: inline-flex;
+}
+
+.quiz input[type="radio"] + label {
+  border: 1px solid #808080;
+  display: inline-block;
+  padding: 8px;
+  text-align: center;
+  width: 100%;
+}
+
+.quiz input[type="radio"]:checked + label,
+.quiz input[type="radio"] + label:hover {
+  background-color: #808080;
+  color: #fff;
+}
+
+/* Quiz Checkboxes */
+
+.quiz input[type="checkbox"] + label::before {
+  content: ' ';
+  min-height: 16px;
+  min-width: 16px;
+  border-radius: 8px;
+  border: 1px solid #808080;
+  margin-right: 10px;
+}
+
+.quiz input[type="checkbox"]:checked + label::before,
+.quiz input[type="checkbox"] + label:hover::before {
+  background-color: #808080;
+}
+
+.quiz input[type="submit"] {
+  cursor: pointer;
+  font-family: Oswald;
+  font-size: 36px;
+  border: 0;
+  background-color: transparent;
+}
+
+.quiz input[type="submit"] {
+  margin-right: 10%;
+  position: relative;
+  float: right;
+}
+
+@media (min-width: 669px) {
+  .quiz-radios .quiz-option {
+    flex-basis: 50%;
+  }
+
+  .quiz input[type="radio"] + label {
+    width: 200px;
+  }
+
+  .quiz input[type="submit"] {
+    margin-right: calc(55% - 200px);
+  }
+}
+
+@media (max-width: 570px) {
+  .quiz-options {
+    flex-direction: column;
+  }
+}
+
+
+/* Main Result Items */
+.results-list {
+  list-style-type: none;
+}
+.results-item-button {
+  border: none;
+  background-color:transparent;
+}
+
+/* Nav */
+nav {
+  box-shadow: 1px 1px 7px grey;
+}
+.nav-items {
+  list-style-type: none;
+}
+.nav-item-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* Results Selection */
+.selection-title {
+  text-transform: uppercase;
 }

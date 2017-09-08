@@ -8,88 +8,161 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <div class="wrapper">
-    <nav class="nav">
+    <nav class="nav hidden">
       <ul class="nav-items">
         <li class="nav-item">
           How do you want to give?
         </li>
         <li class="nav-item">
-          <button class="button">
+          <button class="nav-item-button">
             Anything
           </button>
         </li>
         <li class="nav-item">
-          <button class="button">
+          <button class="nav-item-button">
             Money
           </button>
         </li>
         <li class="nav-item">
-          <button class="button">
+          <button class="nav-item-button">
             Time
           </button>
         </li>
         <li class="nav-item">
-          <button class="button">
+          <button class="nav-item-button">
             Goods
           </button>
         </li>
         <li class="nav-item">
-          <button class="button">
+          <button class="nav-item-button">
             Share
           </button>
         </li>
       </ul>
     </nav>
+  <div class="wrapper">
     <main class="main">
-      <form class="main-content quiz">
+      <form class="main-content quiz quiz-form">
         <h1 class="quiz-header">Glad you want to help!<br />Let's find out which charities are the best matches for you.</h1>
         <fieldset class="quiz-question-group">
-          <legend class = "quiz-question">Which type(s) of organizations are you interested in supporting></legend>
-          <div class="quiz-options">
+          <legend class = "quiz-question">Which type(s) of organizations are you interested in supporting?</legend>
+          <div class="quiz-options quiz-checkboxes">
             <div class="quiz-option">
               <input id="q1-1" value="general relief" type="checkbox" />
-              <label for"q1-1">General Relief</label>
+              <label for="q1-1">General Relief</label>
             </div>
             <div class="quiz-option">
               <input id="q1-2" value="housing" type="checkbox" />
-              <label for"q1-2">Housing</label>
+              <label for="q1-2">Housing</label>
             </div>
             <div class="quiz-option">
               <input id="q1-3" value="food" type="checkbox" />
-              <label for"q1-3">Food</label>
+              <label for="q1-3">Food</label>
             </div>
             <div class="quiz-option">
               <input id="q1-4" value="animal welfare" type="checkbox" />
-              <label for"q1-4">Animal Welfare</label>
+              <label for="q1-4">Animal Welfare</label>
             </div>
           </div>
         </fieldset>
         <fieldset class="quiz-question-group">
           <legend class = "quiz-question">Which type(s) of contribution would you like to make?</legend>
-          <div class="quiz-options">
-            <input id="q2-1" value="financial" type="checkbox" />
-            <label for"q1-1">Financial</label>
-            <input id="q2-1" value="time" type="checkbox" />
-            <label for"q2-1">Time</label>
-            <input id="q2-1" value="goods" type="checkbox" />
-            <label for"q2-1">Goods</label>
+          <div class="quiz-options quiz-checkboxes">
+            <div class="quiz-option">
+              <input id="q2-1" value="financial" type="checkbox" />
+              <label for="q2-1">Financial</label>
+            </div>
+            <div class="quiz-option">
+              <input id="q2-2" value="time" type="checkbox" />
+              <label for="q2-2">Time</label>
+            </div>
+            <div class="quiz-option">
+              <input id="q2-3" value="goods" type="checkbox" />
+              <label for="q2-3">Goods</label>
+            </div>
           </div>
         </fieldset>
         <fieldset class="quiz-question-group">
           <legend class = "quiz-question">Would you like to donate to a local or national charity?</legend>
-          <div class="quiz-options">
-            <input id="q3-1" value="local" type="radio" />
-            <label for"q3-1">Local</label>
-            <input id="q3-2" value="national" type="radio" />
-            <label for"q3-2">National</label>
+          <div class="quiz-options quiz-radios">
+            <div class="quiz-option">
+              <input id="q3-1" value="local" type="radio" name="q3" checked/>
+              <label for="q3-1">Local</label>
+            </div>
+            <div class="quiz-option">
+              <input id="q3-2" value="national" type="radio" name="q3"/>
+              <label for="q3-2">National</label>
+            </div>
           </div>
         </fieldset>
-        <input type="submit" value="Submit" />
+        <input class="quiz-submit-button" type="submit" value="LET'S GO" />
       </form>
-      <section class="main-content results">
-        <ul class="results-links"></ul>
-        <article class="results-selection"></article>
+      <section class="main-content results hidden">
+        <article class="results-selection">
+          <h2 class="selection-title">The Details</h2>
+          <p class="selection-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad quos tempore molestiae animi eaque repellendus ullam fuga. Quaerat est aut deserunt nostrum odio similique consequatur nisi quam obcaecati minus? Labore.</p>
+          <p class="stats-header">Stats(source)</p>
+          <div class="stats-wrapper">
+            <div class="stat stat--grade">
+              <span class="grade">A</span>
+              <span class="grade--title">Grade</span>
+            </div>
+            <div class="stat stat--program-percent">
+              <span class="percent">97%</span>
+              <span class="percent--title">Program %</span>
+            </div>
+            <div class="stat stat--cost">
+              <span class="cost">$8</span>
+              <span class="cost--title">Cost to Raise $100</span>
+            </div>
+          </div>
+          <a href="#" class="selection-link">Donate</a>
+        </article>
+        <ul class="results-list">
+          <li class="results-item">
+            <button class="results-item-button">The Texas Diaper Bank</button>
+          </li>
+          <li class="results-item">
+            <button class="results-item-button">The Driscoll Children's Hospital</button>
+          </li>
+          <li class="results-item">
+            <button class="results-item-button">Austin Pets Alive!</button>
+          </li>
+          <li class="results-item">
+            <button class="results-item-button">The SPCA of Texas</button>
+          </li>
+          <li class="results-item">
+            <button class="results-item-button">The Texas Diaper Bank</button>
+          </li>
+          <li class="results-item">
+            <button class="results-item-button">The Driscoll Children's Hospital</button>
+          </li>
+          <li class="results-item">
+            <button class="results-item-button">Austin Pets Alive!</button>
+          </li>
+          <li class="results-item">
+            <button class="results-item-button">The SPCA of Texas</button>
+          </li>
+          <li class="results-item">
+            <button class="results-item-button">The Texas Diaper Bank</button>
+          </li>
+          <li class="results-item">
+            <button class="results-item-button">The Driscoll Children's Hospital</button>
+          </li>
+          <li class="results-item">
+            <button class="results-item-button">Austin Pets Alive!</button>
+          </li>
+          <li class="results-item">
+            <button class="results-item-button">The SPCA of Texas</button>
+          </li>
+          <script id="address-template" type="text/x-handlebars-template">
+            {{#each charities}}
+              <p>{{this.name}}</p>
+            {{/each}}
+          </script>
+  
+          <div class="content-placeholder"></div>
+        </ul>
       </section>
     </main>
   </div>
