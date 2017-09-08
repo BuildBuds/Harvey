@@ -14,26 +14,36 @@ var httpGet = function(url, callback){
   xmlHttp.open("GET", url, true); // true for asynchronous
   xmlHttp.send(null);
 };
+function setDetails(org) {
+  document.querySelector('.selection-title').textContent = org.name;
+  document.querySelector('.grade').textContent = org.overall;
+  document.querySelector('.percent').textContent = org.program_percentage + '%';
+  document.querySelector('.selection-link').setAttribute('target', '_blank');
+  document.querySelector('.selection-link').setAttribute('href', org.url);
+}
 
-var setContent = function(json) {
-  // Grab the template script
-  var theTemplateScript = document.getElementById('address-template').innerHTML;
+var setContent = function(orgs) {
+  setDetails(orgs[0]);
+  var ul = document.querySelector('.results-list');
+  orgs.forEach(function(org, i) {
+    var li = document.createElement('li');
+    li.classList.add('results-item');
+    var button = document.createElement('button');
+    button.classList.add('results-item-button');
+    button.textContent = org.name;
 
+    button.addEventListener('click', function() {
+      setDetails(org);
+    })
+    button.addEventListener('focus', function() {
+      setDetails(org);
+    })
 
-  // Compile the template
-  var theTemplate = Handlebars.compile(theTemplateScript);
-
-  // Define data object
-  var context = {
-    charities: json
-  };
-
-  // Pass our data to the template
-  var theCompiledHtml = theTemplate(context);
-
-  // Add the compiled html to the page
-  document.querySelector('.content-placeholder').innerHTML = theCompiledHtml;
+    li.appendChild(button);
+    ul.appendChild(li);
+  })
 };
+
 
 // Handles form submission
 var submitHandler = function(e) {
@@ -110,6 +120,7 @@ var submitHandler = function(e) {
   };
 
   var relevantOrgs = showRelevantOrgs();
+  setContent(relevantOrgs);
 
   // make the quiz display none
   quizForm.classList.add('hidden');
@@ -132,6 +143,7 @@ quizForm.addEventListener('submit', submitHandler);
   var apiCallback = function(data) {
     var parsed = JSON.parse(data);
     orgs = parsed.res;
+    console.log('orgs', orgs)
   };
 
   httpGet('https://harvey-api.mybluemix.net/api/0.1/hh', function(d) { apiCallback(d); });
