@@ -8,39 +8,39 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <div class="wrapper">
     <nav class="nav hidden">
       <ul class="nav-items">
         <li class="nav-item">
           How do you want to give?
         </li>
         <li class="nav-item">
-          <button class="button">
+          <button class="nav-item-button">
             Anything
           </button>
         </li>
         <li class="nav-item">
-          <button class="button">
+          <button class="nav-item-button">
             Money
           </button>
         </li>
         <li class="nav-item">
-          <button class="button">
+          <button class="nav-item-button">
             Time
           </button>
         </li>
         <li class="nav-item">
-          <button class="button">
+          <button class="nav-item-button">
             Goods
           </button>
         </li>
         <li class="nav-item">
-          <button class="button">
+          <button class="nav-item-button">
             Share
           </button>
         </li>
       </ul>
     </nav>
+  <div class="wrapper">
     <main class="main">
       <form class="main-content quiz quiz-form">
         <h1 class="quiz-header">Glad you want to help!<br />Let's find out which charities are the best matches for you.</h1>
@@ -131,6 +131,37 @@
           <li class="results-item">
             <button class="results-item-button">The SPCA of Texas</button>
           </li>
+          <li class="results-item">
+            <button class="results-item-button">The Texas Diaper Bank</button>
+          </li>
+          <li class="results-item">
+            <button class="results-item-button">The Driscoll Children's Hospital</button>
+          </li>
+          <li class="results-item">
+            <button class="results-item-button">Austin Pets Alive!</button>
+          </li>
+          <li class="results-item">
+            <button class="results-item-button">The SPCA of Texas</button>
+          </li>
+          <li class="results-item">
+            <button class="results-item-button">The Texas Diaper Bank</button>
+          </li>
+          <li class="results-item">
+            <button class="results-item-button">The Driscoll Children's Hospital</button>
+          </li>
+          <li class="results-item">
+            <button class="results-item-button">Austin Pets Alive!</button>
+          </li>
+          <li class="results-item">
+            <button class="results-item-button">The SPCA of Texas</button>
+          </li>
+          <script id="address-template" type="text/x-handlebars-template">
+            {{#each charities}}
+              <p>{{this.name}}</p>
+            {{/each}}
+          </script>
+  
+          <div class="content-placeholder"></div>
         </ul>
       </section>
     </main>

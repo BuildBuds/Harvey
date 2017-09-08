@@ -146,3 +146,21 @@
   border: none;
   background-color:transparent;
 }
+
+/* Nav */
+nav {
+  box-shadow: 1px 1px 7px grey;
+}
+.nav-items {
+  list-style-type: none;
+}
+.nav-item-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* Results Selection */
+.selection-title {
+  text-transform: uppercase;
+}

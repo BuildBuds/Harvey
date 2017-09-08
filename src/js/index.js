@@ -65,3 +65,37 @@ function submitHandler(e) {
   // make the nav appear
   nav.classList.remove('hidden');
 }
+
+
+// Send data to our html
+
+// fetch('./data.json') // change this to the database path once it's live
+// .then(function(res){
+//   return res.json();
+// })
+// .then(function(json){
+//   var ourJson = json;
+//   setContent(ourJson);
+// });
+
+
+
+function setContent(json) {
+// Grab the template script
+var theTemplateScript = document.getElementById('address-template').innerHTML;
+
+
+// Compile the template
+var theTemplate = Handlebars.compile(theTemplateScript);
+
+// Define data object
+var context = {
+  charities: json
+};
+
+// Pass our data to the template
+var theCompiledHtml = theTemplate(context);
+
+// Add the compiled html to the page
+document.querySelector('.content-placeholder').innerHTML = theCompiledHtml;
+};

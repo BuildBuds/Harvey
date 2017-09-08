@@ -1,6 +1,6 @@
-$gridGap: 20px;
+$gridGap: 40px;
 $gridGutters: 4 * $gridGap;
-$gridWidth: calc(100% - 80px * 2);
+$gridWidth: calc(100% - 160px * 2);
 
 $gridColumns: repeat(12, 1fr);
 
@@ -12,8 +12,8 @@ $gridColumns: repeat(12, 1fr);
 .main {
   grid-column: 1 / span 12;
   display: grid;
-  margin-top: $gridGutters;
-  margin-bottom: $gridGutters;
+  margin-top: $gridGap;
+  margin-bottom: $gridGap;
   grid-template-columns: $gridColumns;
   grid-gap: $gridGap;
 }
@@ -44,13 +44,39 @@ $gridColumns: repeat(12, 1fr);
 }
 
 .results-selection {
-  grid-column: 1 / span 4;
+  grid-column: 1 / span 3;
 }
 .results-list {
   grid-column: 6 / span 6;
 }
 
+/* Nav */
+nav {
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
 .nav-items {
+  margin: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items:center;
+  padding-left: $gridGutters;
+  padding-right: $gridGutters;
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.nav-item-button {
+  height: 100%;
+}
+
+/* Results Selection */
+.results-selection {
+  margin-top: 100px;
 }
