@@ -61,7 +61,7 @@ var progressView = function() {
 // Handles form submission
 var submitHandler = function(e) {
   e.preventDefault();
-
+  console.log('clicked')
 
   var showRelevantOrgs = function() {
     var getQuizParams = function() {
@@ -142,18 +142,20 @@ var submitHandler = function(e) {
   };
 
   var relevantOrgs = showRelevantOrgs();
+  setContent(relevantOrgs);
   progressView();
 };
 
 
 quizForm.addEventListener('submit', submitHandler);
-document.querySelector('.browse').addEventListener('click', progressView);
+document.querySelector('.browse').addEventListener('click', function() {
+  progressView(); 
+});
 
 (function() {
   var apiCallback = function(data) {
     var parsed = JSON.parse(data);
     orgs = parsed.res;
-    console.log('orgs', orgs)
   };
 
   httpGet('https://harvey-api.mybluemix.net/api/0.1/hh', function(d) { apiCallback(d); });
