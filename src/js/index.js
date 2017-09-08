@@ -44,26 +44,24 @@ var submitHandler = function(e) {
 
     // TODO Populate pred
     var pred = getQuizParams();
-    console.log('pred');
-    console.log(pred);
-
-    console.log('orgs');
-    console.log(orgs);
 
     var out = orgs.filter(function(org) {
+      // If the values in the predicate ARE NOT in org, remove it
       var isLocal = function(add) {
         return add.toLowerCase().indexOf('houston') >= 0;
       };
 
-      for (var key in pred) {
-        if (key == 'local') { continue; }
-
-        var vals = pred[key];
-        for (var i=0; i<vals.length; i++){
-          if (org[key].indexOf(vals[i]) < 0) {
-            return false;
-          }
+      var found = false;
+      for (var type in pred['types']) {
+        if (org['types'].indexOf(type) < 0) {
+          found = true;
         }
+      }
+
+      if (found == false) { return false; }
+
+      if (pred['tags'].indexOf(org['tags'][0]) < 0) {
+        return false;
       }
 
       if (pred['local']) {
