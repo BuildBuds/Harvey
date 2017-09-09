@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Oswald:400|Work+Sans:400" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
 </head>
 <body>
     <nav class="nav hidden">
@@ -57,8 +58,8 @@
               <label for="q1-1">General Relief</label>
             </div>
             <div class="quiz-option">
-              <input id="q1-2" value="Housing" type="checkbox" />
-              <label for="q1-2">Housing</label>
+              <input id="q1-2" value="Shelter" type="checkbox" />
+              <label for="q1-2">Shelter</label>
             </div>
             <div class="quiz-option">
               <input id="q1-3" value="Food" type="checkbox" />
@@ -108,7 +109,7 @@
       <section class="main-content results hidden">
         <article class="results-selection">
           <h2 class="selection-title">The Details</h2>
-          <p class="selection-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad quos tempore molestiae animi eaque repellendus ullam fuga. Quaerat est aut deserunt nostrum odio similique consequatur nisi quam obcaecati minus? Labore.</p>
+          <p class="selection-description"></p>
           <p class="stats-header">Stats(source)</p>
           <div class="stats-wrapper">
             <div class="stat stat--grade">
@@ -127,49 +128,6 @@
           <a href="#" class="selection-link">Donate</a>
         </article>
         <ul class="results-list">
-          <li class="results-item">
-            <button class="results-item-button">The Texas Diaper Bank</button>
-          </li>
-          <li class="results-item">
-            <button class="results-item-button">The Driscoll Children's Hospital</button>
-          </li>
-          <li class="results-item">
-            <button class="results-item-button">Austin Pets Alive!</button>
-          </li>
-          <li class="results-item">
-            <button class="results-item-button">The SPCA of Texas</button>
-          </li>
-          <li class="results-item">
-            <button class="results-item-button">The Texas Diaper Bank</button>
-          </li>
-          <li class="results-item">
-            <button class="results-item-button">The Driscoll Children's Hospital</button>
-          </li>
-          <li class="results-item">
-            <button class="results-item-button">Austin Pets Alive!</button>
-          </li>
-          <li class="results-item">
-            <button class="results-item-button">The SPCA of Texas</button>
-          </li>
-          <li class="results-item">
-            <button class="results-item-button">The Texas Diaper Bank</button>
-          </li>
-          <li class="results-item">
-            <button class="results-item-button">The Driscoll Children's Hospital</button>
-          </li>
-          <li class="results-item">
-            <button class="results-item-button">Austin Pets Alive!</button>
-          </li>
-          <li class="results-item">
-            <button class="results-item-button">The SPCA of Texas</button>
-          </li>
-          <script id="address-template" type="text/x-handlebars-template">
-            {{#each charities}}
-              <p>{{this.name}}</p>
-            {{/each}}
-          </script>
-
-          <div class="content-placeholder"></div>
         </ul>
       </section>
     </main>
