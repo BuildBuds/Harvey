@@ -83,3 +83,21 @@ nav {
 .results-selection {
   margin-top: 100px;
 }
+
+
+/* Mobile fix: Nav items spilling out */
+@media (max-width: 800px) {
+  .nav-items {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .nav-title {
+    display: none;
+  }
+}
+/* Mobile fix: Details section awkward vertical placement */
+@media (max-width: 800px) {
+  .results-selection {
+    margin-top: -30px;
+  }
+}
