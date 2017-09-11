@@ -14,13 +14,14 @@ var httpGet = function(url, callback){
   xmlHttp.open("GET", url, true); // true for asynchronous
   xmlHttp.send(null);
 };
-function setDetails(org) {
+
+var setDetails = function(org) {
   document.querySelector('.selection-title').textContent = org.name;
   document.querySelector('.grade').textContent = org.overall;
   document.querySelector('.percent').textContent = org.program_percentage + '%';
   document.querySelector('.selection-link').setAttribute('target', '_blank');
   document.querySelector('.selection-link').setAttribute('href', org.url);
-}
+};
 
 var setContent = function(orgs) {
   setDetails(orgs[0]);
@@ -149,7 +150,9 @@ var submitHandler = function(e) {
 
 quizForm.addEventListener('submit', submitHandler);
 document.querySelector('.browse').addEventListener('click', function() {
-  progressView(); 
+  // progressView();
+  // Tacky, I know
+  submitHandler(new Event('click'));
 });
 
 (function() {
