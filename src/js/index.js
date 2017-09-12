@@ -41,6 +41,15 @@ var setContent = function(orgs) {
     li.classList.add('results-item');
     var button = document.createElement('button');
     button.classList.add('results-item-button');
+    // Styles for focused elements
+      button.addEventListener('focus', function(e) {
+        e.stopImmediatePropagation();
+        button.classList.add('result--selected');
+      })
+      button.addEventListener('blur', function() {
+        button.classList.remove('result--selected');
+      })
+    //
     button.textContent = org.name;
 
     button.addEventListener('click', function() {
