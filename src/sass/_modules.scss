@@ -144,7 +144,6 @@
 }
 .results-item-button {
   border: none;
-  background-color:transparent;
 }
 .results-item {
   margin-bottom: 36px;
@@ -161,6 +160,9 @@ nav {
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+.nav-title {
+  max-width: 80px;
 }
 
 /* Results Selection */

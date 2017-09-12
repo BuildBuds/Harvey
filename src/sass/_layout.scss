@@ -98,6 +98,14 @@ nav {
 /* Mobile fix: Details section awkward vertical placement */
 @media (max-width: 800px) {
   .results-selection {
-    margin-top: -30px;
+    margin-top: -30px; // there's some other margin at play here.
+  }
+}
+
+/* Mobile fix: right-side overflow due to results-list size */
+@media (max-width: 600px) {
+  .results-list {
+    grid-column: 6 / span 3;
+    padding-left: 0;
   }
 }

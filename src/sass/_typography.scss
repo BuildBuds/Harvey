@@ -33,3 +33,10 @@ h1 {
   font-size: 50px;
   text-align:left;
 }
+
+/* Mobile Fix: Horrendous font size of main links */
+@media (max-width: 850px) {
+  .results-item-button {
+    font-size: 24px;
+  }
+}
