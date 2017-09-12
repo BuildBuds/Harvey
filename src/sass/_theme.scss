@@ -1,6 +1,6 @@
 $gray1: #f6f6f6;
 
-$punchRed: #CB262A;
+$punchRed: indianred;
 
 body {
   background-color: $gray1;
@@ -13,5 +13,15 @@ h1 {
 
 input[type="submit"]:hover,
 input[type="submit"]:focus {
-  color: $punchRed
+  color: $punchRed;
+}
+
+/* Main Links */
+.results-item-button {
+  background-color:transparent;
+  color: $punchRed;
+}
+.result--selected {
+  color: #fff;
+  background-color: $punchRed;
 }
