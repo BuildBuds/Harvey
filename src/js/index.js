@@ -164,6 +164,7 @@ quizForm.addEventListener('submit', submitHandler);
 $('.browse').addEventListener('click', function() {
   // progressView();
   // Tacky, I know
+  $('#results').parentNode.classList.add('hidden');
   submitHandler(new Event('click'));
 });
 
