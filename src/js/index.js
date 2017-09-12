@@ -1,3 +1,13 @@
+var $ = function (query) {
+  var res = document.querySelectorAll(query);
+
+  if (res.length === 1) {
+    return res[0];
+  }
+
+  return res;
+};
+
 // Full list of orgs
 var orgs;
 var quizForm = document.querySelector('.quiz-form');
@@ -59,6 +69,34 @@ var progressView = function() {
   nav.classList.remove('hidden');
 };
 
+var filterOrgs = function(pred) {
+  return orgs.filter(function(org) {
+    // If the values in the predicate ARE NOT in org, remove it
+    var isLocal = function(add) {
+      return add.toLowerCase().indexOf('houston') >= 0;
+    };
+
+    var found = false;
+    for (var type in pred['types']) {
+      if (org['types'].indexOf(type) < 0) {
+        found = true;
+      }
+    }
+
+    if (found == false) { return false; }
+
+    if (pred['tags'].indexOf(org['tags'][0]) < 0) {
+      return false;
+    }
+
+    if (pred['local']) {
+      return isLocal(org.address);
+    }
+
+    return true;
+  });
+};
+
 // Handles form submission
 var submitHandler = function(e) {
   e.preventDefault();
@@ -112,31 +150,7 @@ var submitHandler = function(e) {
     // TODO Populate pred
     var pred = getQuizParams();
 
-    var out = orgs.filter(function(org) {
-      // If the values in the predicate ARE NOT in org, remove it
-      var isLocal = function(add) {
-        return add.toLowerCase().indexOf('houston') >= 0;
-      };
-
-      var found = false;
-      for (var type in pred['types']) {
-        if (org['types'].indexOf(type) < 0) {
-          found = true;
-        }
-      }
-
-      if (found == false) { return false; }
-
-      if (pred['tags'].indexOf(org['tags'][0]) < 0) {
-        return false;
-      }
-
-      if (pred['local']) {
-        return isLocal(org.address);
-      }
-
-      return true;
-    });
+    var out = filterOrgs(pred);
 
     console.log(out);
     return out;
@@ -153,6 +167,30 @@ document.querySelector('.browse').addEventListener('click', function() {
   // progressView();
   // Tacky, I know
   submitHandler(new Event('click'));
+});
+
+nav.addEventListener('click', function(e) {
+	if (e.target && e.target.nodeName == 'BUTTON') {
+    if (e.target.dataset) {
+      var types = e.target.dataset.pred;
+      console.log(types);
+
+      var pred = {
+        'types': types
+      };
+
+      // Because I had to do the other goofy filter before
+      var filtered = orgs.filter(function(org) {
+        return org.types.indexOf(pred.types) > -1;
+      });
+
+      var $wrapper = $('.results-list');
+      while ($wrapper.firstChild) {
+        $wrapper.removeChild($wrapper.firstChild);
+      }
+      setContent(filtered);
+    }
+	}
 });
 
 (function() {
