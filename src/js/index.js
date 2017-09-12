@@ -10,10 +10,10 @@ var $ = function (query) {
 
 // Full list of orgs
 var orgs;
-var quizForm = document.querySelector('.quiz-form');
-var quizResults = document.querySelector('.results');
-var main = document.querySelector('.main');
-var nav = document.querySelector('nav');
+var quizForm = $('.quiz-form');
+var quizResults = $('.results');
+var main = $('.main');
+var nav = $('nav');
 
 var httpGet = function(url, callback){
   var xmlHttp = new XMLHttpRequest();
@@ -26,16 +26,16 @@ var httpGet = function(url, callback){
 };
 
 var setDetails = function(org) {
-  document.querySelector('.selection-title').textContent = org.name;
-  document.querySelector('.grade').textContent = org.overall;
-  document.querySelector('.percent').textContent = org.program_percentage + '%';
-  document.querySelector('.selection-link').setAttribute('target', '_blank');
-  document.querySelector('.selection-link').setAttribute('href', org.url);
+  $('.selection-title').textContent = org.name;
+  $('.grade').textContent = org.overall;
+  $('.percent').textContent = org.program_percentage + '%';
+  $('.selection-link').setAttribute('target', '_blank');
+  $('.selection-link').setAttribute('href', org.url);
 };
 
 var setContent = function(orgs) {
   setDetails(orgs[0]);
-  var ul = document.querySelector('.results-list');
+  var ul = $('.results-list');
   orgs.forEach(function(org, i) {
     var li = document.createElement('li');
     li.classList.add('results-item');
@@ -100,7 +100,6 @@ var filterOrgs = function(pred) {
 // Handles form submission
 var submitHandler = function(e) {
   e.preventDefault();
-  console.log('clicked')
 
   var showRelevantOrgs = function() {
     var getQuizParams = function() {
@@ -119,8 +118,8 @@ var submitHandler = function(e) {
         return checkboxesChecked.length > 0 ? checkboxesChecked : null;
       };
 
-      var q1cbs = document.querySelectorAll('.q1 input');
-      var q2cbs = document.querySelectorAll('.q2 input');
+      var q1cbs = $('.q1 input');
+      var q2cbs = $('.q2 input');
 
       var q1Params = getCheckedBoxes(q1cbs);
       var q2Params = getCheckedBoxes(q2cbs);
@@ -152,7 +151,6 @@ var submitHandler = function(e) {
 
     var out = filterOrgs(pred);
 
-    console.log(out);
     return out;
   };
 
@@ -163,32 +161,38 @@ var submitHandler = function(e) {
 
 
 quizForm.addEventListener('submit', submitHandler);
-document.querySelector('.browse').addEventListener('click', function() {
+$('.browse').addEventListener('click', function() {
   // progressView();
   // Tacky, I know
   submitHandler(new Event('click'));
 });
 
 nav.addEventListener('click', function(e) {
-	if (e.target && e.target.nodeName == 'BUTTON') {
-    if (e.target.dataset) {
-      var types = e.target.dataset.pred;
-      console.log(types);
+  var updateView = function(state) {
+    var $wrapper = $('.results-list');
+    while ($wrapper.firstChild) {
+      $wrapper.removeChild($wrapper.firstChild);
+    }
+    setContent(state);
+  };
 
+	if (e.target && e.target.nodeName == 'BUTTON') {
+    var dset = e.target.dataset;
+    if (dset && dset.pred.localeCompare('Money Goods Time') === 0) {
+      updateView(orgs);
+    }
+
+    else {
+      var types = dset.pred;
       var pred = {
         'types': types
       };
 
-      // Because I had to do the other goofy filter before
       var filtered = orgs.filter(function(org) {
         return org.types.indexOf(pred.types) > -1;
       });
 
-      var $wrapper = $('.results-list');
-      while ($wrapper.firstChild) {
-        $wrapper.removeChild($wrapper.firstChild);
-      }
-      setContent(filtered);
+      updateView(filtered);
     }
 	}
 });
