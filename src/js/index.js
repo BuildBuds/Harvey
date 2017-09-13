@@ -215,7 +215,7 @@ nav.addEventListener('click', function(e) {
 });
 
 (function() {
-  var harveyApiCallback = function(data) {
+  var apiCallback = function(data) {
     var parsed = JSON.parse(data);
     orgs = parsed.res.hh;
     hiOrgs = parsed.res.hi;
