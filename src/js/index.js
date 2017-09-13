@@ -1,3 +1,9 @@
+/**
+ * Selects all nodes matching the provided query. For use only when a static or a known number of elements are selected
+ * @param {string} query - A valid html query selector
+ * @returns {object} - A NodeList if more than one DOM element exists or a Node if a single element exists
+ */
+
 var $ = function (query) {
   var res = document.querySelectorAll(query);
 
