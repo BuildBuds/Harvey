@@ -16,6 +16,7 @@ var $ = function (query) {
 
 // Full list of orgs
 var orgs;
+var hiOrgs;
 var quizForm = $('.quiz-form');
 var quizResults = $('.results');
 var main = $('.main');
@@ -214,10 +215,11 @@ nav.addEventListener('click', function(e) {
 });
 
 (function() {
-  var apiCallback = function(data) {
+  var harveyApiCallback = function(data) {
     var parsed = JSON.parse(data);
-    orgs = parsed.res;
+    orgs = parsed.res.hh;
+    hiOrgs = parsed.res.hi;
   };
 
-  httpGet('https://harvey-api.mybluemix.net/api/0.1/hh', function(d) { apiCallback(d); });
+  httpGet('https://harvey-api.mybluemix.net/api/0.1/all', function(d) { apiCallback(d); });
 })();
