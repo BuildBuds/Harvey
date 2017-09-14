@@ -3,7 +3,6 @@
  * @param {string} query - A valid html query selector
  * @returns {object} - A NodeList if more than one DOM element exists or a Node if a single element exists
  */
-
 var $ = function (query) {
   var res = document.querySelectorAll(query);
 
@@ -21,6 +20,8 @@ var quizForm = $('.quiz-form');
 var quizResults = $('.results');
 var main = $('.main');
 var nav = $('nav');
+
+var quizFilled = false;
 
 var httpGet = function(url, callback){
   var xmlHttp = new XMLHttpRequest();
@@ -113,6 +114,24 @@ var filterOrgs = function(pred) {
   });
 };
 
+/**
+ * Selects all nodes matching the provided query. For use only when a static or a known number of elements are selected
+ * @param {NodeList} cbs - NodeList of checkboxes. Could be empty, but unlikely.
+ * @returns {NodeList} | null - A NodeList of checkboxes that are checked. Check for nulls
+ */
+var getCheckedBoxes = function(cbs) {
+  var checkboxesChecked = [];
+  // loop over them all
+  for (var i=0; i<cbs.length; i++) {
+    // And stick the checked ones onto an array...
+    if (cbs[i].checked) {
+      checkboxesChecked.push(cbs[i]);
+    }
+  }
+  // Return the array if it is non-empty, or null
+  return checkboxesChecked.length > 0 ? checkboxesChecked : null;
+};
+
 // Handles form submission
 var submitHandler = function(e) {
   e.preventDefault();
@@ -121,18 +140,6 @@ var submitHandler = function(e) {
     var getQuizParams = function() {
       // Thanks for the code
       // https://stackoverflow.com/questions/8563240/how-to-get-all-checked-checkboxes
-      var getCheckedBoxes = function(cbs) {
-        var checkboxesChecked = [];
-        // loop over them all
-        for (var i=0; i<cbs.length; i++) {
-           // And stick the checked ones onto an array...
-           if (cbs[i].checked) {
-              checkboxesChecked.push(cbs[i]);
-           }
-        }
-        // Return the array if it is non-empty, or null
-        return checkboxesChecked.length > 0 ? checkboxesChecked : null;
-      };
 
       var q1cbs = $('.q1 input');
       var q2cbs = $('.q2 input');
@@ -170,11 +177,32 @@ var submitHandler = function(e) {
     return out;
   };
 
-  var relevantOrgs = showRelevantOrgs();
-  setContent(relevantOrgs);
-  progressView();
+  if (quizFilled) {
+    var relevantOrgs = showRelevantOrgs();
+    setContent(relevantOrgs);
+    progressView();
+  }
+
 };
 
+quizForm.addEventListener('click', function(e) {
+  var $submit = $('.quiz-submit-button');
+
+  if (e.target && e.target.nodeName == 'INPUT') {
+    var q1cbs = getCheckedBoxes($('.q1 input'));
+    var q2cbs = getCheckedBoxes($('.q2 input'));
+
+    quizFilled = (q1cbs !== null) && (q2cbs !== null);
+
+    if (quizFilled) {
+      $submit.removeAttribute('disabled');
+    }
+
+    else {
+      $submit.setAttribute('disabled', true);
+    }
+  }
+});
 
 quizForm.addEventListener('submit', submitHandler);
 $('.browse').addEventListener('click', function() {
