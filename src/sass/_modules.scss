@@ -112,6 +112,12 @@
   font-family: Oswald;
   font-size: 36px;
   padding: 16px 20px;
+  transition: background-color .3s ease-out;
+}
+
+.quiz input[type="submit"]:disabled {
+  cursor: not-allowed;
+  background-color: darken($punchRed, 50);
 }
 
 .quiz input[type="submit"] {
