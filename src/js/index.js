@@ -21,6 +21,7 @@ var quizResults = $('.results');
 var main = $('.main');
 var nav = $('nav');
 
+var skipped = false;
 var quizFilled = false;
 
 var httpGet = function(url, callback){
@@ -177,11 +178,12 @@ var submitHandler = function(e) {
     return out;
   };
 
-  if (quizFilled) {
+  if (quizFilled || skipped) {
     var relevantOrgs = showRelevantOrgs();
     setContent(relevantOrgs);
     progressView();
   }
+
 
 };
 
@@ -206,8 +208,7 @@ quizForm.addEventListener('click', function(e) {
 
 quizForm.addEventListener('submit', submitHandler);
 $('.browse').addEventListener('click', function() {
-  // progressView();
-  // Tacky, I know
+  skipped = true;
   $('#results').parentNode.classList.add('hidden');
   submitHandler(new Event('click'));
 });
