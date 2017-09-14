@@ -207,6 +207,7 @@ quizForm.addEventListener('click', function(e) {
 });
 
 quizForm.addEventListener('submit', submitHandler);
+
 $('.browse').addEventListener('click', function() {
   skipped = true;
   $('#results').parentNode.classList.add('hidden');

@@ -1,0 +1,5 @@
+---
+applications:
+ - name: Give
+   memory: 64M
+   buildpack: sdk-for-nodejs

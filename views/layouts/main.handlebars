@@ -9,46 +9,47 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
 </head>
 <body>
-    <nav class="nav hidden">
-      <ul class="nav-items">
-        <li class="nav-item nav-title">
-          How do you want to give?
-        </li>
-        <li class="nav-item">
-          <button class="nav-item-button" id="results">
-            Results
-          </button>
-        </li>
-        <li class="nav-item">
-          <button data-pred="Money Goods Time" class="nav-item-button">
-            Anything
-          </button>
-        </li>
-        <li class="nav-item">
-          <button data-pred="Money" class="nav-item-button">
-            Money
-          </button>
-        </li>
-        <li class="nav-item">
-          <button data-pred="Time" class="nav-item-button">
-            Time
-          </button>
-        </li>
-        <li class="nav-item">
-          <button data-pred="Goods" class="nav-item-button">
-            Goods
-          </button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-item-button">
-            Share
-          </button>
-        </li>
-      </ul>
-    </nav>
-  <div class="wrapper">
-    <main class="main">
-      <form class="main-content quiz quiz-form">
+  <nav class="nav hidden">
+    <ul class="nav-items">
+      <li class="nav-item nav-title">
+        How do you want to give?
+      </li>
+      <li class="nav-item">
+        <button class="nav-item-button" id="results">
+          Results
+        </button>
+      </li>
+      <li class="nav-item">
+        <button data-pred="Money Goods Time" class="nav-item-button">
+          Anything
+        </button>
+      </li>
+      <li class="nav-item">
+        <button data-pred="Money" class="nav-item-button">
+          Money
+        </button>
+      </li>
+      <li class="nav-item">
+        <button data-pred="Time" class="nav-item-button">
+          Time
+        </button>
+      </li>
+      <li class="nav-item">
+        <button data-pred="Goods" class="nav-item-button">
+          Goods
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-item-button">
+          Share
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="wrapper container">
+    <main class="main row">
+      <form class="main-content quiz quiz-form col-xs-12">
         <h1 class="quiz-header">Glad you want to help!<br />Let's find out which charities are the best matches for you.</h1>
         <fieldset class="quiz-question-group">
           <legend class = "quiz-question">Which type(s) of organizations are you interested in supporting?</legend>
@@ -106,7 +107,7 @@
         <button type="button" class="browse"><h4>I prefer to browse</h4></button>
 
       </form>
-      <section class="main-content results hidden">
+      <section class="main-content results hidden col-xs-12">
         <article class="results-selection">
           <h2 class="selection-title">The Details</h2>
           <p class="selection-description"></p>
