@@ -215,10 +215,41 @@ nav.addEventListener('click', function(e) {
 });
 
 (function() {
+  var orgCompareScore = function(a, b) {
+    var convertScore = function (grade) {
+      var key = {
+        'A+': 100,
+        'A': 95,
+        'A-': 90,
+        'B+': 85,
+        'B': 80,
+        'B-': 75,
+        'C+': 70,
+        'C': 65,
+        'C-': 60,
+        'D+': 55,
+        'D': 50,
+        'D-': 45,
+        'F': 40,
+        '': 0
+      };
+
+      return key[grade];
+    };
+
+    var orgAScore = convertScore(a.overall);
+    var orgBScore = convertScore(b.overall);
+
+    return orgBScore - orgAScore;
+  };
+
   var apiCallback = function(data) {
     var parsed = JSON.parse(data);
     orgs = parsed.res.hh;
     hiOrgs = parsed.res.hi;
+
+    orgs = orgs.sort(orgCompareScore);
+    hiOrgs = hiOrgs.sort(orgCompareScore);
   };
 
   httpGet('https://harvey-api.mybluemix.net/api/0.1/all', function(d) { apiCallback(d); });
