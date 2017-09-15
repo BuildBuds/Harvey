@@ -20,6 +20,8 @@ var quizForm = $('.quiz-form');
 var quizResults = $('.results');
 var main = $('.main');
 var nav = $('nav');
+var $hamburger = $('.navbar-toggle');
+
 
 var skipped = false;
 var quizFilled = false;
@@ -223,7 +225,7 @@ nav.addEventListener('click', function(e) {
     setContent(state);
   };
 
-	if (e.target && e.target.nodeName == 'BUTTON') {
+	if (e.target && e.target.nodeName == 'BUTTON' && e.target.dataset != {}) {
     var dset = e.target.dataset;
     if (dset && dset.pred.localeCompare('Money Goods Time') === 0) {
       updateView(orgs);
@@ -242,6 +244,10 @@ nav.addEventListener('click', function(e) {
       updateView(filtered);
     }
 	}
+});
+
+$hamburger.addEventListener('click', function(e) {
+  $('.navbar-collapse').classList.toggle('hidden');
 });
 
 (function() {

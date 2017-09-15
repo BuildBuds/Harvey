@@ -1,0 +1,21 @@
+/* Nav */
+.nav {
+  // box-shadow: 1px 1px 7px grey;
+
+  button {
+    background-color: $gray1;
+    border: none;
+  }
+
+  li {
+    margin-left: 4px;
+  }
+}
+
+.nav-items {
+  list-style-type: none;
+}
+
+.nav-title {
+  max-width: 80px;
+}

@@ -105,26 +105,26 @@
 
 .quiz input[type="submit"] {
   background-color: $punchRed;
-  // background-color: transparent;
-  border: 0;
-  color: $gray1;
-  cursor: pointer;
+//   // background-color: transparent;
+//   border: 0;
+//   color: $gray1;
+//   cursor: pointer;
+  float: right;
   font-family: Oswald;
   font-size: 36px;
-  padding: 16px 20px;
+  margin-right: 10%;
+//   padding: 16px 20px;
   transition: background-color .3s ease-out;
 }
-
-.quiz input[type="submit"]:disabled {
-  cursor: not-allowed;
-  background-color: darken($punchRed, 50);
-}
-
-.quiz input[type="submit"] {
-  margin-right: 10%;
-  position: relative;
-  float: right;
-}
+//
+// .quiz input[type="submit"]:disabled {
+//   cursor: not-allowed;
+//   background-color: darken($punchRed, 50);
+// }
+//
+// .quiz input[type="submit"] {
+//   position: relative;
+// }
 
 @media (min-width: 669px) {
   .quiz-radios .quiz-option {
@@ -156,22 +156,6 @@
 }
 .results-item {
   margin-bottom: 36px;
-}
-
-/* Nav */
-nav {
-  box-shadow: 1px 1px 7px grey;
-}
-.nav-items {
-  list-style-type: none;
-}
-.nav-item-button {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-.nav-title {
-  max-width: 80px;
 }
 
 /* Results Selection */
